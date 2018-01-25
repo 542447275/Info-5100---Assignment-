@@ -1,0 +1,55 @@
+Problem : Design a job searching and posting platform
+
+Objects and Behaviors:
+
+Job 
+        Data: title, company, salary, workingTime, position
+        Behaviors: 
+Website
+        Data: 
+        Behaviors: search, post, delete, modify
+
+DataBase
+        Data: Job[], title, company, salary, workingTime, position
+        Behaviors: search, add, modify, delete
+
+CommonUser
+        Data: username, password
+        Behaviors: login, logout, requestToSearch, requestToPost, requestToDelete
+
+CompanyUser
+        Data: username, password
+        Behaviors: login, logout, requestToPost, requestToDelete, requestToModify
+
+Sequence of Flow - Invoke Objects with Behaviors
+
+Website web;
+CommonUser jack;
+DataBase mySQL;
+Job[] job;
+CompanyUser hr;
+
+if(jack.login-> username, password)
+    if(jack.requestToSearch)
+        web.search->title, company, salary, workingTime, position: Job
+    End
+End
+
+if(hr.login-> username, password)
+    if(hr.requestToPost)
+        web.post-> title, company, salary, workingTime, position : mySQL->add(job[])
+    End
+    if(hr.requestToSearch)
+        web.search-> title || company || salary || workingTime || position : job[]
+    End
+    if(hr.requestToDelete)
+        web.search-> title || company || salary || workingTime || position : job[]
+        web.delete-> job[]
+        mySQL.delete-> job[]
+    End
+    if(hr.requestToModify)
+        web.search-> title || company || salary || workingTime || position : job[]
+        web.modify-> salary : job
+        mySQL.modify-> salary : job
+    End
+End 

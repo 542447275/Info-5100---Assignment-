@@ -1,0 +1,47 @@
+Problem : Design an app for calling taxis (e.g. Uber)
+
+Objects and Behaviors:
+
+User
+        Data: userLocation, userDestination
+        Behaviors: callTaxi, login, logout, cancelTaxi, pay, selectPaymentMethod
+
+Driver
+        Data: driverName, driverLocation, carLicencePlate
+        Behaviors: takeOrder, cancelOrder
+
+Uber 
+        Data: userAccount, userPassword, driverAccount, driverPassword
+        Behaviors: search, compare, cancelOrder, bookOrder, orderNumber, return
+
+CreditCard
+        Data : cardNumber, name, company, expiryDate, security code
+        Behavior : paymentSuccess, pay
+
+CreditCardCompany
+        Behavior : authorizeTransaction
+
+Sequence of Flow - Invoke Objects with Behaviors
+
+
+User pony;
+Driver driver;
+Uber uber;
+CreditCard card;
+
+if(pony.login->userAccount, userPassword)
+    pony.callTaxi->userLocation, userDestination
+    uber.search(userLocation)
+    uber.compare(userLocation, driverLocation)->userLocation, userDestination, driverLocation: driverName, driverLocation, carLicencePlate
+    uber.bookOrder: driverName, driverLocation, carLicencePlate, userAccount, userLocation, userDestination
+    if(driver.takeOrder)
+        pony.selectPaymentMethod-> card, cardNumber, name, company, expiryDate, security code
+        if(card.paymentSuccess)
+            uber.return orderNumber
+    End
+    if(pony.cancelTaxi || driver.cancelOrder)
+        uber.cancelOrder->orderNumber
+    End
+else
+    throwError
+End

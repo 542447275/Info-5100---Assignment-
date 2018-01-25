@@ -1,0 +1,54 @@
+Problem : Ordering a hotel online before a trip
+
+Objects and Behaviors:
+
+Customer
+        Data: name, numberOfPeople, phoneNumber[], ID_number[]
+        Behaviors: search, book, reviews, modify, cancel, selectPaymentMethod
+
+InternetServer
+        Data: Ctrip, Alitrip, Agoda, qyer (Collection of Websites), orderNumber
+        Behaviors: searchForHotels, isConnected, compare, cancelOrder, changeOrder, nextPage
+
+Hotel
+        Data: hotelName, location, level, price, date, timeToCome, timeToLeave
+        Behaviors: 
+
+CreditCard
+        Data : cardNumber, name, company, expiryDate, security code
+        Behavior : paymentSuccess, pay
+ 
+CreditCardCompany
+        Behavior : authorizeTransaction
+
+
+Sequence of Flow - Invoke Objects with Behaviors
+
+Customer jack;
+InternetServer server;
+Hotel hotel;
+CreditCard card;
+CreditCarCompany visa;
+
+
+if(server.isConnected)
+    jack.search-> Ctrip, location, level, price : hotel
+    server.searchForHotels-> hotelName || location || level || price : hotel
+    while(nextPage.isTrue)
+        if(jack.wantToBookThis)
+            jack.book->hotelName
+            jack.selectPaymentMethod-> card, visa : price
+            card.pay->cardNumber, name, company, expiryDate, security code : paymentSuccess
+            if(card.paymentSuccess)
+            return server.orderNumber
+        End
+            if(jack.wantToCancelOrder)
+            jack.cancel->orderNumber->server.cancelOrder
+            else if (jack.wantToChangeOrder)
+            jack.change->timeToCome, server
+            server.changeOrder-> timeToCome
+            return server.orderNumber
+        else 
+                server.nextPage
+        End
+End    

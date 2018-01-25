@@ -1,0 +1,33 @@
+Problem : Ordering food in a restaurant
+
+Objects and Behaviors:
+
+Customer 
+        Data: money, creditCard
+        Behaviors: findRestaurant, enter, leave, order, pay, askHelp, eating
+
+Restaurant
+        Data: menu
+        Behaviors: charge, serve, askAnyOtherNeed
+
+Sequence of Flow - Invoke Objects with Behaviors
+
+Customer snowboy;
+Restaurant restaurant;
+
+if(snowboy.findRestaurant())
+    snowboy.enter
+    snowboy.order-> restaurant : menu
+    restaurant.serve
+    while(snowboy.eating)
+        if(snowboy.askHelp)
+            restaurant.serve
+        if(restaurant.askAnyOtherNeed->snowboy)
+            restaurant.serve
+        else
+            return
+    
+        End
+    restaurant.charge
+    snowboy.pay
+End
