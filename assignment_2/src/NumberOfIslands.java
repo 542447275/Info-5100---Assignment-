@@ -30,8 +30,8 @@ public class NumberOfIslands {
     private int col;
 
     /*Deep First Search
-    * Time complexity : O(n)
-    * Space complexity : O(1)
+    * Time complexity : O(m * n) Traverse the matrix (Two-dimensional array), so it's O(m*n)
+    * Space complexity : O(n) Uses stack when call the recursive function.
     * */
     private int numIslands1(char[][] grid) {
         int res = 0;
@@ -66,8 +66,8 @@ public class NumberOfIslands {
     }
 
     /*Broad First Search
-    * Time complexity : O(n)
-    * Space complexity : O(1)
+    * Time complexity : O(m * n) Traverse the matrix (Two-dimensional array), so it's O(m*n)
+    * Space complexity : O(m * n) Uses queue to store value which can be m*n in worst case.
     * */
     private int numIslands2(char[][] grid) {
         int res = 0;

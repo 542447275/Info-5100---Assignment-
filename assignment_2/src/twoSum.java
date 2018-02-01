@@ -11,8 +11,8 @@ public class twoSum {
             System.out.print(a + " ");
     }
     /*Brute Force
-    * Time complexity : O(n^2)
-    * Space complexity : O(1)
+    * Time complexity : O(n^2) Because there are two for loop which traversal the arrary twice, so the time complexity is O(n^2).
+    * Space complexity : O(1) There is no other space needed.
     * */
     public static int[] twoSum1(int[] nums, int target) {
         int [] res = new int[2];
@@ -32,8 +32,8 @@ public class twoSum {
         return res;
     }
     /*use HashMap
-    * Time complexity : O(n)
-    * Space complexity : O(n)
+    * Time complexity : O(n) Only traverse the array once.
+    * Space complexity : O(n) Used a hashmap to store value, so space complexity is O(n)
     * */
     public static int[] twoSum2(int[] nums, int target){
         int[] res = new int[2];
