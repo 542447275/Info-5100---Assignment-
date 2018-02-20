@@ -1,4 +1,5 @@
 1. setName() function doesn't assign the input name to the object‘s name, it just return the input name instead.
+   Two Book() constructors' input parameter are the same type (int), which will make user confused. 
 
 2. The return type of getTime() function should be String.
 
