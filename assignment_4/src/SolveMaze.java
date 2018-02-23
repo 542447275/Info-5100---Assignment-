@@ -1,3 +1,5 @@
+//total score : 10 / 10
+
 import java.util.*;
 
 public class SolveMaze {
