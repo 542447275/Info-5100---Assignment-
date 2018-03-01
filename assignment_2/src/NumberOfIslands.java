@@ -36,9 +36,9 @@ public class NumberOfIslands {
     private int numIslands1(char[][] grid) {
         int res = 0;
         row = grid.length; // get the row of matrix
+        col = grid[0].length; // get the column
         if (row == 0)
             return 0;
-        col = grid[0].length; // get the column
 
         // Traverse the matrix
         for (int i = 0; i < row; i++) {
