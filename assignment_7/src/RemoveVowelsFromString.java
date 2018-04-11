@@ -8,8 +8,17 @@ public class RemoveVowelsFromString {
         return sb.toString();
     }
     public static void main(String[] args){
-        RemoveVowelsFromString rv = new RemoveVowelsFromString();
-        String res = rv.removeVowelsFromString("abcedfghigkAEIOUKJCV");
-        System.out.println(res);
+        //RemoveVowelsFromString rv = new RemoveVowelsFromString();
+        //String res = rv.removeVowelsFromString("abcedfghigkAEIOUKJCV");
+        //System.out.println(res);
+
+        double dd = 3.1234232;
+        String res = "%.2f";
+        res = Double.toString(dd);
+
+
+        double d = 0.6544;
+        String s=String.format("%.2f",d);
+        System.out.println(s);
     }
 }
